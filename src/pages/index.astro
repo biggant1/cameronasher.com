@@ -1,28 +1,37 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+import deloitteTower from "../assets/images/deloitte-tower.jpg";
+import longBeachShipyard from "../assets/images/long-beach-shipyard.jpg";
+import matterhornBasketballCourt from "../assets/images/matterhorn-basketball-court.jpg";
+import oilRefineryNight from "../assets/images/oil-refinery-night.jpg";
 
 const places = [
     {
         name: "An oil refinery",
-        src: "/images/oil-refinery-night.jpg",
+        src: oilRefineryNight,
+        width: 720,
         alt: "photo of an oil refinery at night",
         credit: 'Photo: <a href="https://www.reddit.com/r/evilbuildings/comments/10b5b1t/an_oil_refinery_on_a_gloomy_night/">u/CPMETHODOLOGY</a> on Reddit (Vancouver according to OP)',
     },
     {
         name: "A large corporate office building",
-        src: "/images/deloitte-tower.jpg",
+        src: deloitteTower,
+        width: 720,
         alt: "photo of deloitte tower in montreal",
         credit: 'Photo: <a href="https://commons.wikimedia.org/wiki/File:Deloitte3sep15.jpg">Mtlfiredude</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons',
     },
     {
         name: "The basketball court in the matterhorn at disneyland",
-        src: "/images/matterhorn-basketball-court.jpg",
+        src: matterhornBasketballCourt,
+        width: 426,
         alt: "photo of the inside of the matterhorn",
         credit: "Photo: photographer unknown",
     },
     {
         name: "A naval shipyard",
-        src: "/images/long-beach-shipyard.jpg",
+        src: longBeachShipyard,
+        width: 720,
         alt: "photo of long beach naval shipyard",
         credit: 'Photo: PH2 R.J. Davis, U.S. Navy, 1993, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Long_Beach_Naval_Shipyard.jpg">Wikimedia Commons</a>',
     },
@@ -71,10 +80,12 @@ const places = [
                         <figcaption class="mb-2 text-xl font-bold">
                             {place.name}
                         </figcaption>
-                        <img
+                        <Image
                             src={place.src}
                             alt={place.alt}
-                            class="max-w-full"
+                            width={place.width}
+                            densities={[1, 2]}
+                            quality={90}
                         />
                         {place.credit && (
                             <p class="mt-1 text-sm" set:html={place.credit} />
