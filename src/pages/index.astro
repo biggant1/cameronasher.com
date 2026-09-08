@@ -6,26 +6,30 @@ const places = [
         name: "An oil refinery",
         src: "/images/oil-refinery-night.jpg",
         alt: "photo of an oil refinery at night",
+        credit: 'Photo: <a href="https://www.reddit.com/r/evilbuildings/comments/10b5b1t/an_oil_refinery_on_a_gloomy_night/">u/CPMETHODOLOGY</a> on Reddit (Vancouver according to OP)',
     },
     {
         name: "A large corporate office building",
         src: "/images/deloitte-tower.jpg",
         alt: "photo of deloitte tower in montreal",
+        credit: 'Photo: <a href="https://commons.wikimedia.org/wiki/File:Deloitte3sep15.jpg">Mtlfiredude</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons',
     },
     {
         name: "The basketball court in the matterhorn at disneyland",
         src: "/images/matterhorn-basketball-court.jpg",
         alt: "photo of the inside of the matterhorn",
+        credit: "Photo: photographer unknown",
     },
     {
         name: "A naval shipyard",
         src: "/images/long-beach-shipyard.jpg",
         alt: "photo of long beach naval shipyard",
+        credit: 'Photo: PH2 R.J. Davis, U.S. Navy, 1993, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Long_Beach_Naval_Shipyard.jpg">Wikimedia Commons</a>',
     },
 ];
 ---
 
-<Layout title="Cameron's Personal Site">
+<Layout title="Cameron Asher" description="Cameron Asher's personal site">
     <main
         class="max-w-3xl px-6 py-8 font-serif text-lg text-black [&_a]:text-blue-700 [&_a]:underline [&_a:visited]:text-purple-800"
     >
@@ -54,7 +58,7 @@ const places = [
         </section>
 
         <section class="mt-6">
-            <h1 class="mb-3 text-3xl font-bold">Places I'd like to go</h1>
+            <h2 class="mb-3 text-3xl font-bold">Places I'd like to go</h2>
             <p class="mb-6">
                 If you can get me to any of these, please <abbr
                     title="hit me up">hmu</abbr
@@ -72,6 +76,9 @@ const places = [
                             alt={place.alt}
                             class="max-w-full"
                         />
+                        {place.credit && (
+                            <p class="mt-1 text-sm" set:html={place.credit} />
+                        )}
                     </figure>
                 ))
             }
