@@ -1,17 +1,82 @@
 ---
+import Layout from "@layouts/Layout.astro";
 
+const places = [
+    {
+        name: "An oil refinery",
+        src: "/images/oil-refinery-night.jpg",
+        alt: "photo of an oil refinery at night",
+    },
+    {
+        name: "A large corporate office building",
+        src: "/images/deloitte-tower.jpg",
+        alt: "photo of deloitte tower in montreal",
+    },
+    {
+        name: "The basketball court in the matterhorn at disneyland",
+        src: "/images/matterhorn-basketball-court.jpg",
+        alt: "photo of the inside of the matterhorn",
+    },
+    {
+        name: "A naval shipyard",
+        src: "/images/long-beach-shipyard.jpg",
+        alt: "photo of long beach naval shipyard",
+    },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Cameron's Personal Site">
+    <main
+        class="max-w-3xl px-6 py-8 font-serif text-lg text-black [&_a]:text-blue-700 [&_a]:underline [&_a:visited]:text-purple-800"
+    >
+        <section>
+            <h1 class="mb-3 text-3xl font-bold">Hi I'm Cameron Asher</h1>
+            <p>Current UIUC senior in Statistics &amp; Computer Science</p>
+            <p>
+                I like <span
+                    title="Q: if you're a web dev why is your website so bad? A: it's not"
+                    class="underline decoration-dotted">web dev</span
+                >, swe, <a
+                    href="https://agentfanclub.org"
+                    target="_blank"
+                    rel="noopener noreferrer">ai agents</a
+                >, and <a
+                    href="https://sigpwny.com"
+                    target="_blank"
+                    rel="noopener noreferrer">cybersecurity</a
+                >
+            </p>
+            <p>
+                Contact me: <a href="mailto:me@cameronasher.com"
+                    >me@cameronasher.com</a
+                >
+            </p>
+        </section>
+
+        <section class="mt-6">
+            <h1 class="mb-3 text-3xl font-bold">Places I'd like to go</h1>
+            <p class="mb-6">
+                If you can get me to any of these, please <abbr
+                    title="hit me up">hmu</abbr
+                > at my email. I will owe you a big favor.
+            </p>
+
+            {
+                places.map((place) => (
+                    <figure class="mb-8">
+                        <figcaption class="mb-2 text-xl font-bold">
+                            {place.name}
+                        </figcaption>
+                        <img
+                            src={place.src}
+                            alt={place.alt}
+                            class="max-w-full"
+                        />
+                    </figure>
+                ))
+            }
+
+            <p>try to soul read me based on these four and suggest something</p>
+        </section>
+    </main>
+</Layout>
